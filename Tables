@@ -1,0 +1,380 @@
+CREATE TABLE Products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    stock_quantity INT DEFAULT 0,
+    category VARCHAR(50),
+    supplier_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO Products (product_id,product_name, price, stock_quantity, category, supplier_id) VALUES
+(1001,'Joy Stick PS4 Sony', 2299.99, 30, 'Electronics', 1),
+(1002,'HP Keyboard', 1799.99, 15, 'Electronics', 1),
+(1003,'Bluetooth Speaker(Boult)', 549.99, 40, 'Electronics', 2),
+(1004,'USB Cable', 59.99, 100, 'Electronics', 2),
+(1005,'Wireless Mouse(HP)', 1324.99, 60, 'Electronics', 1),
+(1006,'Monitor(Asus)', 14449.99, 25, 'Electronics', 2),
+(1007,'Headphones(Boat)', 2229.99, 45, 'Electronics', 2),
+(1008,'Gaming Console', 3399.99, 10, 'Electronics', 1),
+(1009,'External Hard Drive', 4459.99, 20, 'Electronics', 2),
+(10010,'Smartwatch FireBolt', 2199.99, 30, 'Electronics', 2),
+(1011,'Bread', 19.99, 200, 'Food', 3),
+(1012,'Butter', 52.99, 100, 'Food', 11),
+(1013,'Cheese', 44.99, 80, 'Food', 11),
+(1014,'Yogurt', 31.49, 150, 'Food', 11),
+(1015,'Chocolate', 19.99, 300, 'Food', 11),
+(1016,'Frozen Pizza', 75.99, 40, 'Food', 3),
+(1017,'Pasta', 179.29, 120, 'Food', 3),
+(1018,'Cereal', 133.99, 100, 'Food', 3),
+(1019,'Tomato Sauce', 62.50, 60, 'Food', 3),
+(1020,'Rice 500gms', 200.99, 300, 'Food', 3),
+(1021,'Fanta 1Litre', 59.99, 100, 'Juice', 8),
+(1022,'Fizz 1Litre', 44.99, 90, 'Juice', 8),
+(1023,'Slice 1Litre', 89.99, 80, 'Juice', 9),
+(1024,'Maaza 1Litre', 79.99, 70, 'Juice', 9),
+(1025,'Frooti 1Litre', 83.50, 60, 'Juice', 8),
+(1026,'Bovento 1Litre', 69.99, 100, 'Juice', 9),
+(1027,'Thumps UP 1Litre', 71.50, 50, 'Juice', 8),
+(1028,'Pepsi 1Litre', 47.50, 90, 'Juice', 9),
+(1029,'Champa 1Litre', 57.99, 40, 'Juice', 8),
+(1030,'Jeera 1Litre', 39.99, 70, 'Juice', 9),
+(1031,'Paint Brushes', 5.99, 50, 'Crafts', 5),
+(1032,'Sketchbook', 9.99, 100, 'Crafts', 5),
+(1033,'Acrylic Paint Set', 19.99, 30, 'Crafts', 5),
+(1034,'Scissors', 33.99, 150, 'Crafts', 5),
+(1035,'Glue Gun', 52.99, 40, 'Crafts', 5),
+(1036,'Color Pencils', 8.99, 80, 'Crafts', 5),
+(1037,'Craft Paper', 0.99, 200, 'Crafts', 5),
+(1038,'Yarn', 12.99, 100, 'Crafts', 5),
+(1039,'Beads', 20.50, 500, 'Crafts', 5),
+(1040,'Knitting Needles', 4.99, 60, 'Crafts', 5),
+
+(1041,'Shampoo Dove', 55.99, 70, 'Personal Care', 12),
+(1042,'Body Lotion Vaseline Chocolate', 6.99, 50, 'Personal Care', 6),
+(1043,'Toothpaste Dabur', 32.50, 120, 'Personal Care', 12),
+(1044,'Deodorant Fogg', 144.50, 80, 'Personal Care', 6),
+(1045,'Face Wash Ponds', 35.50, 60, 'Personal Care', 12),
+(1046,'Hair Gel Sweat Wet', 33.99, 90, 'Personal Care', 6),
+(1047,'Sunscreen Nivea', 48.99, 40, 'Personal Care', 12),
+(1048,'Hand Soap Dettol', 61.99, 200, 'Personal Care', 6),
+(1049,'Nail Polish', 25.99, 100, 'Personal Care', 12),
+(1050,'Hair Dryer', 29.99, 30, 'Personal Care', 6),
+(1051,'Hammer', 49.99, 50, 'Tools', 7),
+(1052,'Screwdriver Set', 143.99, 60, 'Tools', 7),
+(1053,'Wrench', 82.50, 70, 'Tools', 7),
+(1054,'Measuring Tape', 5.99, 90, 'Tools', 7),
+(1055,'Pliers', 37.99, 80, 'Tools', 7),
+(1056,'Drill Machine', 449.99, 20, 'Tools', 7),
+(1057,'Level', 26.50, 100, 'Tools', 7),
+(1058,'Saw', 113.99, 40, 'Tools', 7),
+(1059,'Utility Knife', 74.99, 150, 'Tools', 7),
+(1060,'Safety Glasses', 33.99, 120, 'Tools', 7),
+(1061,'Vacuum Cleaner', 99.99, 15, 'Home', 10),
+(1062,'Blender', 49.99, 25, 'Home', 4),
+(1063,'Toaster', 19.99, 50, 'Home', 10),
+(1064,'Microwave', 89.99, 20, 'Home', 4),
+(1065,'Air Purifier', 149.99, 10, 'Home', 10),
+(1066,'Electric Kettle', 29.99, 40, 'Home', 4),
+(1067,'Iron', 25.99, 30, 'Home', 10),
+(1068,'Ceiling Fan', 39.99, 50, 'Home', 10),
+(1069,'Heater', 79.99, 15, 'Home', 4),
+(1070,'Water Filter', 49.99, 20, 'Home', 4);
+
+CREATE TABLE Categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(50) NOT NULL UNIQUE,
+    description VARCHAR(255)
+);
+
+INSERT INTO Categories (category_id,category_name, description) VALUES
+(101,'Electronics', 'Devices, gadgets, and electronic accessories including smartphones, laptops, and accessories.'),
+(102,'Food', 'Groceries, snacks, and packaged food items like bread, cheese, and cereal.'),
+(103,'Juice', 'Beverages including fresh and packaged juices like orange juice, apple juice, and lemonade.'),
+(104,'Crafts', 'Craft materials and supplies for DIY projects, including paint brushes, sketchbooks, and yarn.'),
+(105,'Personal Care', 'Personal hygiene and grooming products like shampoo, deodorant, and hair dryers.'),
+(106,'Tools', 'Hand tools, power tools, and accessories such as hammers, screwdrivers, and utility knives.'),
+(107,'Home', 'Household items and appliances for home use, including vacuum cleaners, blenders, and air purifiers.');
+
+CREATE TABLE Suppliers (
+    supplier_id INT AUTO_INCREMENT PRIMARY KEY,
+    supplier_name VARCHAR(100) NOT NULL,
+    contact_number VARCHAR(15),
+    email VARCHAR(100),
+    address VARCHAR(255)
+);
+INSERT INTO Suppliers (supplier_id, supplier_name, contact_number, email, address) VALUES
+INSERT INTO Suppliers (supplier_id, supplier_name, contact_number, email, address) VALUES
+(1, 'Tech India Pvt Ltd.', '080-12345678', 'info@techindia.com', '123 Electronic City, Bengaluru, Karnataka'), 
+(2, 'Gadget Solutions', '022-23456789', 'sales@gadgetsolutions.in', '456 Andheri East, Mumbai, Maharashtra'), 
+(3, 'Fresh Foods Ltd.', '011-45678901', 'contact@freshfoods.in', '321 Connaught Place, New Delhi, Delhi'), 
+(8, 'Healthy Juice Suppliers', '044-56789012', 'orders@healthyjuice.in', '654 T Nagar, Chennai, Tamil Nadu'), 
+(5, 'Craft World', '033-67890123', 'hello@craftworld.com', '987 Park Street, Kolkata, West Bengal'), 
+(6, 'Essentials Co.', '079-78901234', 'info@essentials.in', '159 Relief Road, Ahmedabad, Gujarat'), 
+(7, 'Tool King', '020-89012345', 'contact@toolking.in', '753 Shivaji Nagar, Pune, Maharashtra'), 
+(4, 'Home Comfort Supplies', '0172-90123456', 'support@homecomfort.in', '951 Sector 17, Chandigarh, Punjab'), 
+(9, 'Organic Juice Express', '0612-01234567', 'service@organicjuice.in', '852 Boring Road, Patna, Bihar'), 
+(10, 'Kitchen Essentials', '0251-1234567', 'kitchenessentials@supplies.com', '19 MG Road, Thane, Maharashtra'), 
+(11, 'Amul Pvt. Limited', '022-27893000', 'amul@amul.in', 'AMUL Dairy, Anand, Gujarat'); 
+(12, 'Moksha Personal Care Supplies', '080-87654321', 'care@personalcare.in', '102 Health Street, Bengaluru, Karnataka'); 
+
+CREATE TABLE Product_Batches (
+    batch_id INT AUTO_INCREMENT PRIMARY KEY,
+    supplier_id INT,
+    product_id INT,
+    batch_number VARCHAR(50) NOT NULL,
+    manufacturing_date DATE,
+    expiry_date DATE,
+    quantity INT,
+    FOREIGN KEY (supplier_id) REFERENCES Suppliers(supplier_id),
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);
+INSERT INTO Product_Batches (product_id, supplier_id, batch_number, manufacturing_date, expiry_date, quantity) VALUES
+(1001, 1, 'BATCH1001', '2024-05-01', '2028-05-01', 30),  -- Electronics (4 years)
+(1002, 1, 'BATCH1002', '2024-05-02', '2028-05-02', 15),  -- Electronics (4 years)
+(1003, 2, 'BATCH1003', '2024-05-03', '2028-05-03', 40),  -- Electronics (4 years)
+(1004, 2, 'BATCH1004', '2024-05-04', '2028-05-04', 100), -- Electronics (4 years)
+(1005, 1, 'BATCH1005', '2024-05-05', '2028-05-05', 60),  -- Electronics (4 years)
+(1006, 2, 'BATCH1006', '2024-05-06', '2028-05-06', 25),  -- Electronics (4 years)
+(1007, 2, 'BATCH1007', '2024-05-07', '2028-05-07', 45),  -- Electronics (4 years)
+(1008, 1, 'BATCH1008', '2024-05-08', '2028-05-08', 10),  -- Electronics (4 years)
+(1009, 2, 'BATCH1009', '2024-05-09', '2028-05-09', 20),  -- Electronics (4 years)
+(10010, 2, 'BATCH10010', '2024-05-10', '2028-05-10', 30), -- Electronics (4 years)
+(1011, 3, 'BATCH1011', '2024-05-01', '2024-06-01', 200), -- Food (1 month)
+(1012, 11, 'BATCH1012', '2024-05-01', '2024-06-01', 100), -- Food (1 month)
+(1013, 11, 'BATCH1013', '2024-05-01', '2024-06-01', 80),  -- Food (1 month)
+(1014, 11, 'BATCH1014', '2024-05-01', '2024-06-01', 150), -- Food (1 month)
+(1015, 11, 'BATCH1015', '2024-05-01', '2024-06-01', 300), -- Food (1 month)
+(1016, 3, 'BATCH1016', '2024-05-01', '2024-06-01', 40),  -- Food (1 month)
+(1017, 3, 'BATCH1017', '2024-05-01', '2024-06-01', 120), -- Food (1 month)
+(1018, 3, 'BATCH1018', '2024-05-01', '2024-06-01', 100), -- Food (1 month)
+(1019, 3, 'BATCH1019', '2024-05-01', '2024-06-01', 60),  -- Food (1 month)
+(1020, 3, 'BATCH1020', '2024-05-01', '2024-06-01', 300), -- Food (1 month)
+(1021, 8, 'BATCH1021', '2024-05-01', '2024-09-01', 100), -- Juice (4 months)
+(1022, 8, 'BATCH1022', '2024-05-01', '2024-09-01', 90),  -- Juice (4 months)
+(1023, 9, 'BATCH1023', '2024-05-01', '2024-09-01', 80),  -- Juice (4 months)
+(1024, 9, 'BATCH1024', '2024-05-01', '2024-09-01', 70),  -- Juice (4 months)
+(1025, 8, 'BATCH1025', '2024-05-01', '2024-09-01', 60),  -- Juice (4 months)
+(1026, 9, 'BATCH1026', '2024-05-01', '2024-09-01', 100), -- Juice (4 months)
+(1027, 8, 'BATCH1027', '2024-05-01', '2024-09-01', 50),  -- Juice (4 months)
+(1028, 9, 'BATCH1028', '2024-05-01', '2024-09-01', 90),  -- Juice (4 months)
+(1029, 8, 'BATCH1029', '2024-05-01', '2024-09-01', 40),  -- Juice (4 months)
+(1030, 9, 'BATCH1030', '2024-05-01', '2024-09-01', 70),  -- Juice (4 months)
+(1031, 5, 'BATCH1031', '2024-05-01', '2027-05-01', 50),  -- Crafts (3 years)
+(1032, 5, 'BATCH1032', '2024-05-01', '2027-05-01', 100), -- Crafts (3 years)
+(1033, 5, 'BATCH1033', '2024-05-01', '2027-05-01', 30),  -- Crafts (3 years)
+(1034, 5, 'BATCH1034', '2024-05-01', '2027-05-01', 150), -- Crafts (3 years)
+(1035, 5, 'BATCH1035', '2024-05-01', '2027-05-01', 40),  -- Crafts (3 years)
+(1036, 5, 'BATCH1036', '2024-05-01', '2027-05-01', 80),  -- Crafts (3 years)
+(1037, 5, 'BATCH1037', '2024-05-01', '2027-05-01', 200), -- Crafts (3 years)
+(1038, 5, 'BATCH1038', '2024-05-01', '2027-05-01', 100), -- Crafts (3 years)
+(1039, 5, 'BATCH1039', '2024-05-01', '2027-05-01', 500), -- Crafts (3 years)
+(1040, 5, 'BATCH1040', '2024-05-01', '2027-05-01', 60),  -- Crafts (3 years)
+(1041, 12, 'BATCH1041', '2024-05-01', '2025-05-01', 70),  -- Personal Care (1 year)
+(1042, 6, 'BATCH1042', '2024-05-01', '2025-05-01', 50),  -- Personal Care (1 year)
+(1043, 12, 'BATCH1043', '2024-05-01', '2025-05-01', 120), -- Personal Care (1 year)
+(1044, 6, 'BATCH1044', '2024-05-01', '2025-05-01', 80),  -- Personal Care (1 year)
+(1045, 12, 'BATCH1045', '2024-05-01', '2025-05-01', 60),  -- Personal Care (1 year)
+(1046, 6, 'BATCH1046', '2024-05-01', '2025-05-01', 90),  -- Personal Care (1 year)
+(1047, 12, 'BATCH1047', '2024-05-01', '2025-05-01', 40),  -- Personal Care (1 year)
+(1048, 6, 'BATCH1048', '2024-05-01', '2025-05-01', 200), -- Personal Care (1 year)
+(1049, 12, 'BATCH1049', '2024-05-01', '2025-05-01', 100), -- Personal Care (1 year)
+(1050, 6, 'BATCH1050', '2024-05-01', '2025-05-01', 30),  -- Personal Care (1 year)
+(1051, 7, 'BATCH1051', '2024-05-01', '2034-05-01', 50),  -- Tools (10 years)
+(1052, 7, 'BATCH1052', '2024-05-01', '2034-05-01', 60),  -- Tools (10 years)
+(1053, 7, 'BATCH1053', '2024-05-01', '2034-05-01', 70),  -- Tools (10 years)
+(1054, 7, 'BATCH1054', '2024-05-01', '2034-05-01', 90),  -- Tools (10 years)
+(1055, 7, 'BATCH1055', '2024-05-01', '2034-05-01', 80),  -- Tools (10 years)
+(1056, 7, 'BATCH1056', '2024-05-01', '2034-05-01', 20),  -- Tools (10 years)
+(1057, 7, 'BATCH1057', '2024-05-01', '2034-05-01', 100), -- Tools (10 years)
+(1058, 7, 'BATCH1058', '2024-05-01', '2034-05-01', 40),  -- Tools (10 years)
+(1059, 7, 'BATCH1059', '2024-05-01', '2034-05-01', 150), -- Tools (10 years)
+(1060, 7, 'BATCH1060', '2024-05-01', '2034-05-01', 120), -- Tools (10 years)
+(1061, 7, 'BATCH1061', '2024-05-01', '2034-05-01', 200), -- Tools (10 years)
+(1062, 7, 'BATCH1062', '2024-05-01', '2034-05-01', 250), -- Tools (10 years)
+(1063, 7, 'BATCH1063', '2024-05-01', '2034-05-01', 300), -- Tools (10 years)
+(1064, 7, 'BATCH1064', '2024-05-01', '2034-05-01', 350), -- Tools (10 years)
+(1065, 7, 'BATCH1065', '2024-05-01', '2034-05-01', 400), -- Tools (10 years)
+(1066, 7, 'BATCH1066', '2024-05-01', '2034-05-01', 450), -- Tools (10 years)
+(1067, 7, 'BATCH1067', '2024-05-01', '2034-05-01', 500), -- Tools (10 years)
+(1068, 7, 'BATCH1068', '2024-05-01', '2034-05-01', 550), -- Tools (10 years)
+(1069, 7, 'BATCH1069', '2024-05-01', '2034-05-01', 600), -- Tools (10 years)
+(1070, 7, 'BATCH1070', '2024-05-01', '2034-05-01', 650) -- Tools (10 years)
+
+CREATE TABLE StockMovementLogs (
+    log_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT NOT NULL,
+    movement_date DATE NOT NULL,
+    movement_type ENUM('Return', 'Adjustment', 'Sale', 'Purchase') NOT NULL,
+    quantity_change INT NOT NULL,
+    remarks VARCHAR(255),
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);
+
+INSERT INTO StockMovementLogs (product_id, movement_date, movement_type, quantity_change, remarks) VALUES
+(1001, '2023-09-10', 'Sale', -5, 'Sold 5 units as part of a promotional sale'),
+(1002, '2023-09-12', 'Purchase', 20, 'Restocked for the holiday season'),
+(1003, '2023-09-15', 'Return', 3, 'Customer return due to defect'),
+(1004, '2023-09-18', 'Adjustment', -2, 'Stock correction after inventory count'),
+(1005, '2023-09-20', 'Sale', -10, 'Bulk order sale to retailer'),
+(1006, '2023-09-22', 'Purchase', 10, 'New stock arrived from supplier'),
+(1007, '2023-09-25', 'Return', 2, 'Return due to incorrect shipment'),
+(1008, '2023-09-28', 'Adjustment', 5, 'Adjustment for damaged items replaced'),
+(1009, '2023-10-01', 'Sale', -8, 'Online sale event'),
+(1010, '2023-10-05', 'Purchase', 15, 'Supplier restock'),
+(1011, '2023-10-10', 'Sale', -20, 'In-store sale promotion'),
+(1012, '2023-10-12', 'Adjustment', 2, 'Correction after stock count'),
+(1013, '2023-10-15', 'Return', 1, 'Return due to customer dissatisfaction'),
+(1014, '2023-10-18', 'Sale', -30, 'Catering bulk order'),
+(1015, '2023-10-20', 'Purchase', 50, 'Supplier restock for festive season'),
+(1016, '2023-10-22', 'Adjustment', -5, 'Expired stock removed'),
+(1017, '2023-10-25', 'Sale', -15, 'Weekend sale promotion'),
+(1018, '2023-10-28', 'Return', 5, 'Returned due to quality issues'),
+(1019, '2023-11-01', 'Sale', -10, 'Sold to regular vendor'),
+(1020, '2023-11-05', 'Purchase', 100, 'Bulk restock from supplier'),
+(1021, '2023-11-07', 'Sale', -25, 'Retailer purchase order'),
+(1022, '2023-11-10', 'Adjustment', 3, 'Inventory adjustment after stocktake'),
+(1023, '2023-11-12', 'Return', 2, 'Customer return for expired items'),
+(1024, '2023-11-15', 'Sale', -12, 'Sold during store event'),
+(1025, '2023-11-18', 'Purchase', 10, 'Restock for anticipated demand'),
+(1026, '2023-11-20', 'Adjustment', -4, 'Damaged stock written off'),
+(1027, '2023-11-22', 'Sale', -10, 'Flash sale'),
+(1028, '2023-11-25', 'Return', 1, 'Return due to packaging issue'),
+(1029, '2023-11-28', 'Purchase', 20, 'Seasonal stock restock'),
+(1030, '2023-12-01', 'Adjustment', 5, 'Stock audit adjustment'),
+(1031, '2023-12-03', 'Sale', -15, 'Local art event sale'),
+(1032, '2023-12-05', 'Purchase', 50, 'Bulk order for art supplies restock'),
+(1033, '2023-12-07', 'Return', 2, 'Returned due to damaged packaging'),
+(1034, '2023-12-10', 'Sale', -30, 'School bulk order'),
+(1035, '2023-12-12', 'Purchase', 10, 'Restock of high-demand craft item'),
+(1036, '2023-12-15', 'Adjustment', -3, 'Correction from inventory audit'),
+(1037, '2023-12-18', 'Sale', -50, 'Sale promotion for holiday season'),
+(1038, '2023-12-20', 'Return', 5, 'Returned due to quality issue'),
+(1039, '2023-12-22', 'Purchase', 20, 'Large restock for holiday demand'),
+(1040, '2023-12-24', 'Adjustment', 4, 'Adjustment after quality inspection'),
+(1041, '2023-12-26', 'Sale', -10, 'Sold during holiday season promotion'),
+(1042, '2023-12-28', 'Purchase', 25, 'Bulk purchase for upcoming promotion'),
+(1043, '2024-01-02', 'Return', 2, 'Customer return due to allergy'),
+(1044, '2024-01-05', 'Sale', -15, 'Retailer purchase'),
+(1045, '2024-01-08', 'Purchase', 30, 'Restock due to high demand'),
+(1046, '2024-01-10', 'Adjustment', -5, 'Adjustment due to damaged items'),
+(1047, '2024-01-12', 'Sale', -8, 'Sold during new year event'),
+(1048, '2024-01-15', 'Return', 3, 'Return due to incorrect order'),
+(1049, '2024-01-18', 'Purchase', 20, 'Restock for high-demand period'),
+(1050, '2024-01-20', 'Adjustment', -2, 'Adjustment after stock review'),
+(1051, '2024-01-22', 'Sale', -5, 'Sold to hardware store'),
+(1052, '2024-01-25', 'Purchase', 40, 'Restock for workshop sale event'),
+(1053, '2024-01-28', 'Adjustment', -3, 'Inventory adjustment for lost items'),
+(1054, '2024-01-30', 'Sale', -10, 'Special offer sale'),
+(1055, '2024-02-01', 'Purchase', 15, 'Restock due to demand'),
+(1056, '2024-02-03', 'Adjustment', -1, 'Adjustment for damaged product'),
+(1057, '2024-02-05', 'Sale', -20, 'Sold for local workshop event'),
+(1058, '2024-02-08', 'Purchase', 30, 'Supplier bulk restock'),
+(1059, '2024-02-10', 'Return', 1, 'Returned by customer'),
+(1060, '2024-02-12', 'Sale', -12, 'Flash sale discount event'),
+(1061, '2024-02-15', 'Purchase', 10, 'Restock for appliance store'),
+(1062, '2024-02-17', 'Adjustment', -2, 'Adjustment for broken units'),
+(1063, '2024-02-20', 'Sale', -8, 'Discounted sale event'),
+(1064, '2024-02-22', 'Return', 3, 'Return due to defect'),
+(1065, '2024-02-25', 'Purchase', 5, 'Restock for high demand item'),
+(1066, '2024-02-28', 'Adjustment', -1, 'Adjustment due to error in previous entry'),
+(1067, '2024-03-02', 'Sale', -10, 'Sold during appliance expo'),
+(1068, '2024-03-05', 'Return', 2, 'Return due to customer dissatisfaction'),
+(1069, '2024-03-08', 'Purchase', 20, 'Stock increase for seasonal sale'),
+(1070, '2024-03-10', 'Adjustment', -4, 'Correction for inventory count');
+
+CREATE TABLE ProductVariants (
+    variant_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    color VARCHAR(50),
+    size VARCHAR(50),
+    stock_quantity INT DEFAULT 0,
+    price DECIMAL(10, 2),
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);
+
+-- Insert Values into ProductVariants with no NULL values
+INSERT INTO ProductVariants (product_id, color, size, stock_quantity, price) VALUES
+(1001, 'Black', 'Standard', 15, 2299.99),
+(1001, 'Red', 'Standard', 15, 2299.99),
+(1002, 'Black', 'Standard', 10, 1799.99),
+(1003, 'Black', 'Mini', 20, 549.99),
+(1003, 'Blue', 'Mini', 20, 549.99),
+(1004, 'White', '1 Meter', 60, 59.99),
+(1004, 'Black', '2 Meters', 40, 79.99),
+(1005, 'Gray', 'Standard', 60, 1324.99),
+(1006, 'Black', '24 inch', 10, 14449.99),
+(1006, 'White', '27 inch', 15, 15449.99),
+(1007, 'Black', 'Over-Ear', 25, 2229.99),
+(1007, 'Blue', 'In-Ear', 20, 1999.99),
+(1008, 'Gray', 'Standard', 10, 3399.99),
+(1009, 'Black', '1TB', 20, 4459.99),
+(1010, 'Black', 'Standard', 30, 2199.99),
+(1011, 'No Color', 'Small', 100, 19.99),
+(1011, 'No Color', 'Large', 100, 29.99),
+(1012, 'No Color', '250g', 60, 52.99),
+(1012, 'No Color', '500g', 40, 79.99),
+(1013, 'No Color', '200g', 80, 44.99),
+(1014, 'No Color', '500ml', 150, 31.49),
+(1015, 'No Color', '100g', 200, 19.99),
+(1015, 'No Color', '200g', 100, 34.99),
+(1016, 'No Color', 'Regular', 20, 75.99),
+(1016, 'No Color', 'Family Size', 20, 129.99),
+(1017, 'No Color', '500g', 120, 179.29),
+(1018, 'No Color', '250g', 50, 133.99),
+(1018, 'No Color', '500g', 50, 219.99),
+(1019, 'No Color', '500ml', 60, 62.50),
+(1020, 'No Color', '500gms', 150, 200.99),
+(1021, 'Orange', '1 Litre', 50, 59.99),
+(1021, 'Lemon', '1 Litre', 50, 64.99),
+(1022, 'Orange', '1 Litre', 90, 44.99),
+(1023, 'Mango', '1 Litre', 80, 89.99),
+(1024, 'Mango', '1 Litre', 70, 79.99),
+(1025, 'Mango', '1 Litre', 60, 83.50),
+(1026, 'Apple', '1 Litre', 100, 69.99),
+(1027, 'Cola', '1 Litre', 50, 71.50),
+(1028, 'Cola', '1 Litre', 90, 47.50),
+(1029, 'Cola', '1 Litre', 40, 57.99),
+(1030, 'Cumin', '1 Litre', 70, 39.99),
+(1031, 'No Color', 'Standard', 50, 5.99),
+(1032, 'No Color', 'A4', 100, 9.99),
+(1033, 'No Color', 'Standard', 30, 19.99),
+(1034, 'No Color', 'Standard', 150, 33.99),
+(1035, 'No Color', 'Standard', 40, 52.99),
+(1036, 'No Color', '24-Pack', 80, 8.99),
+(1037, 'No Color', 'Sheet', 200, 0.99),
+(1038, 'No Color', 'Standard', 100, 12.99),
+(1039, 'No Color', 'Pack', 500, 20.50),
+(1040, 'No Color', 'Standard', 60, 4.99),
+(1041, 'No Color', '200ml', 50, 55.99),
+(1041, 'No Color', '500ml', 20, 89.99),
+(1042, 'No Color', '200ml', 50, 6.99),
+(1043, 'No Color', '100g', 120, 32.50),
+(1044, 'No Color', 'Standard', 80, 144.50),
+(1045, 'No Color', '100ml', 60, 35.50),
+(1046, 'No Color', '100ml', 90, 33.99),
+(1047, 'No Color', '50ml', 40, 48.99),
+(1048, 'No Color', '200ml', 200, 61.99),
+(1049, 'No Color', 'Standard', 100, 25.99),
+(1050, 'No Color', 'Standard', 30, 29.99),
+(1051, 'No Color', 'Standard', 50, 49.99),
+(1052, 'No Color', 'Standard', 60, 143.99),
+(1053, 'No Color', 'Standard', 70, 82.50),
+(1054, 'No Color', 'Standard', 90, 5.99),
+(1055, 'No Color', 'Standard', 80, 37.99),
+(1056, 'No Color', 'Standard', 20, 449.99),
+(1057, 'No Color', 'Standard', 100, 26.50),
+(1058, 'No Color', 'Standard', 40, 113.99),
+(1059, 'No Color', 'Standard', 150, 74.99),
+(1060, 'No Color', 'Standard', 120, 33.99),
+(1061, 'No Color', 'Standard', 15, 99.99),
+(1062, 'No Color', 'Standard', 25, 49.99),
+(1063, 'No Color', 'Standard', 50, 19.99),
+(1064, 'No Color', 'Standard', 20, 89.99),
+(1065, 'No Color', 'Standard', 10, 149.99),
+(1066, 'No Color', 'Standard', 40, 29.99),
+(1067, 'No Color', 'Standard', 30, 25.99),
+(1068, 'No Color', 'Standard', 50, 39.99),
+(1069, 'No Color', 'Standard', 15, 79.99),
+(1070, 'No Color', 'Standard', 20, 49.99);
+
+
